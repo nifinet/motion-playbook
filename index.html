@@ -66,18 +66,11 @@ body {
   margin-bottom: 24px;
 }
 
-.avatar-mono {
+.header-meta img {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--film-gradient);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.02em;
+  object-fit: cover;
   flex-shrink: 0;
 }
 
@@ -479,14 +472,14 @@ code {
 
   <header class="header">
     <div class="header-meta">
-      <div class="avatar-mono">NF</div>
+      <img src="img/nicolas.jpg" alt="Nicolas Finet">
       <div class="author-info">
         <div class="author-name"><a href="https://www.linkedin.com/in/nifinet" target="_blank" rel="noopener">Nicolas Finet</a></div>
         <div>Cofounder, Sortlist · building Max at yourmax.ai</div>
       </div>
     </div>
     <h1>How I made a 68-second launch film from a <span class="grad">one-line prompt.</span></h1>
-    <p style="font-size:17px;">Everyone who saw the film asked for the prompt. Here's the uncomfortable truth: the prompt was one line, in French, with a typo. The setup around it did the work. This is the real transcript, verbatim, including what didn't work.</p>
+    <p style="font-size:17px;">Everyone who saw the film asked for the prompt. Here's the uncomfortable truth: the prompt was one line. The setup around it did the work. This is the real transcript (I work in French; quotes are translated), including what didn't work.</p>
     <div class="header-stats">
       <div class="stat"><strong>68s</strong> final film</div>
       <div class="stat"><strong>1 line</strong> initial prompt</div>
@@ -511,9 +504,8 @@ code {
     <p>Sunday, 5:25 PM. This is the entire prompt, copied from my Claude Code transcript:</p>
 
     <div class="message-example">
-      <div class="msg-label">Me → Claude · Sunday 5:25 PM</div>
-      Je veux que tu me fasses une vidéo du même style https://x.com/chhddavid/status/2080788252425150535<br><br>Mais pour YourMax.ai
-      <div class="msg-translation">"I want you to make me a video in the same style as [this X post]. But for YourMax.ai."</div>
+      <div class="msg-label">Me → Claude · Sunday 5:25 PM · translated from French</div>
+      I want you to make me a video in the same style as https://x.com/chhddavid/status/2080788252425150535<br><br>But for YourMax.ai
     </div>
 
     <p>The link in there is the whole brief. It points to <a href="https://x.com/chhddavid/status/2080788252425150535" target="_blank" rel="noopener"><strong>this film by @chhddavid for Shipper</strong></a>, the "Claude Opus 5 one-shots motion videos" post. Go watch it before reading on: it's a masterclass, everything below is reverse-engineered from it, and none of this exists without his film.</p>
@@ -557,43 +549,43 @@ code {
 
     <h2>The feedback loop, verbatim</h2>
 
-    <p>Full honesty: the visuals landed on the first render. The script took three passes, and the fixes came from five short notes over two evenings. This is every piece of direction I gave, copied verbatim from the transcript, typos included. Notice what they are: <strong>taste, not specs.</strong></p>
+    <p>Full honesty: the visuals landed on the first render. The script took three passes, and the fixes came from five short notes over two evenings. This is every piece of direction I gave, straight from the transcript (translated from my French originals). Notice what they are: <strong>taste, not specs.</strong></p>
 
     <div class="message-example">
       <div class="msg-label">Note 1 · Sunday 7:13 PM · after watching the first cut</div>
-      visuellement c'ets canon. Je pense que tu devrais rebosser sur le script pour que ça soit plus logique.
-      <div class="msg-translation">"Visually it's stunning. I think you should rework the script so it's more logical." → Claude found three logic faults it had copied from the reference: solution shown before the problem, the 7 AM result delivered before the 4 AM work, logo reveal at 26s so the film seemed to end and restart. It recut to six acts: enemy, setup, night, morning, judgment, price.</div>
+      Visually it's stunning. I think you should rework the script so it's more logical.
+      <div class="msg-translation">→ Claude found three logic faults it had copied from the reference: solution shown before the problem, the 7 AM result delivered before the 4 AM work, logo reveal at 26s so the film seemed to end and restart. It recut to six acts: enemy, setup, night, morning, judgment, price.</div>
     </div>
 
     <div class="message-example">
       <div class="msg-label">Note 2 · Sunday 8:00 PM</div>
-      ok c'est bien mais je veux 0 em dashes. Parfois des problèmes de centrage
-      <div class="msg-translation">"OK it's good but I want 0 em dashes. Some centering problems." → All on-screen metadata separators became "·", and the kinetic type's lateral drift was made symmetric so finished lines settle back to center.</div>
+      OK it's good but I want 0 em dashes. Some centering problems here and there
+      <div class="msg-translation">→ All on-screen metadata separators became "·", and the kinetic type's lateral drift was made symmetric so finished lines settle back to center.</div>
     </div>
 
     <div class="message-example">
       <div class="msg-label">Note 3 · Sunday 8:43 PM</div>
-      je capte pas le "Alex Gasson" à la fin
-      <div class="msg-translation">"I don't get the 'Alex Gasson' at the end." → The film's payoff (the #1 lead, by name) was rendered as a bare text pill and nobody read it as the answer. It became a full lead card with a face and a "call me first" bubble. The answer to "who do you call first?" has to be a person, not a string.</div>
+      I don't get the "Alex Gasson" at the end
+      <div class="msg-translation">→ The film's payoff (the #1 lead, by name) was rendered as a bare text pill and nobody read it as the answer. It became a full lead card with a face and a "call me first" bubble. The answer to "who do you call first?" has to be a person, not a string.</div>
     </div>
 
     <div class="message-example">
       <div class="msg-label">Note 4 · Monday 7:51 AM · after showing it around</div>
-      On m'a dit: trop rapide<br>
-      Aussi: on devrait mettre des tête de personnes plutôt que des initiales ou des placeholders.<br>
-      Focus sur 99€: je mettrais plutôt focus sur free trial. Par contre fait pas un gros zoom FREE<br>
-      Tu proposes quoi? (avant de rebuild)
-      <div class="msg-translation">"I was told: too fast. Also: we should use people's faces instead of initials or placeholders. Focus on €99: I'd focus on the free trial instead. But don't do a big FREE zoom. What do you propose? (before rebuilding)" → Claude proposed: stretch 50s to 68s by giving reading time to text beats, reuse the 22 fictional portraits already published on the site (no real people, and the film matches the site), and close on seven day-tiles filling up instead of a giant FREE, with €99 kept as a subordinate line so pricing isn't hidden.</div>
+      I was told: too fast<br>
+      Also: we should use people's faces instead of initials or placeholders.<br>
+      Focus on €99: I'd focus on the free trial instead. But don't do a big FREE zoom<br>
+      What do you propose? (before rebuilding)
+      <div class="msg-translation">→ Claude proposed: stretch 50s to 68s by giving reading time to text beats, reuse the 22 fictional portraits already published on the site (no real people, and the film matches the site), and close on seven day-tiles filling up instead of a giant FREE, with €99 kept as a subordinate line so pricing isn't hidden.</div>
     </div>
 
     <div class="message-example">
-      <div class="msg-label">Note 5 · Monday 7:55 AM</div>
+      <div class="msg-label">Note 5 · Monday 7:55 AM · verbatim, no translation needed</div>
       go
-      <div class="msg-translation">The final 68s master rendered that morning.</div>
+      <div class="msg-translation">→ The final 68s master rendered that morning.</div>
     </div>
 
     <div class="callout">
-      <strong>The pattern:</strong> I never told Claude how to fix anything. I said what felt wrong ("plus logique", "trop rapide", "je capte pas") and once asked for options before a rebuild. Screenshots of frames that looked off, pasted straight into the terminal, did the rest. Direction is a taste job; the model owns the craft.
+      <strong>The pattern:</strong> I never told Claude how to fix anything. I said what felt wrong ("more logical", "too fast", "I don't get it") and once asked for options before a rebuild. Screenshots of frames that looked off, pasted straight into the terminal, did the rest. Direction is a taste job; the model owns the craft.
     </div>
 
     <h2>The 12 grammar rules Claude extracted from 100 frames</h2>
