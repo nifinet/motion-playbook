@@ -272,6 +272,72 @@ code {
   border-top: 1px dashed var(--border);
 }
 
+/* ===== TERMINAL ===== */
+.terminal {
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0 8px;
+  border: 1px solid #2a2a2a;
+  background: #1b1b1f;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #26262b;
+}
+
+.terminal-bar span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.terminal-bar span:nth-child(1) { background: #ff5f57; }
+.terminal-bar span:nth-child(2) { background: #febc2e; }
+.terminal-bar span:nth-child(3) { background: #28c840; }
+
+.terminal-bar .terminal-title {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #9a9aa2;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.terminal-body {
+  padding: 18px 20px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #e8e8ec;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-body .t-caret { color: #6b6b74; }
+.terminal-body .t-cmd {
+  background: var(--film-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+.terminal-body .t-dim { color: #8f8f98; }
+
+.terminal-caption {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 8px 0 16px;
+}
+
 /* ===== RULE CARDS ===== */
 .rule-card {
   background: var(--card-bg);
@@ -533,12 +599,17 @@ code {
       <strong>Steal the grammar, not the pixels.</strong> A code-generated motion film is made of the exact materials the model writes fluently. You're not asking for After Effects. You're asking for a web page that happens to be 68 seconds long.
     </div>
 
-    <p>Session setup: <code>/model</code> → Opus with 1M context, because a film is one giant coherent artifact and every revision has to stay in one head. Tools on the machine, not in the prompt: <code>yt-dlp</code>, <code>ffmpeg</code>, <code>node</code>. Then give an <strong>outcome, not a task list</strong>. For bigger missions I open with <code>/goal</code> + the outcome ("Goal set: …"), which pins it for the whole run so Claude drives to done instead of stopping at the first deliverable. Here the outcome fit in one message. Sunday, 5:25 PM, verbatim:</p>
+    <p>Session setup: <code>/model</code> → Opus with 1M context, because a film is one giant coherent artifact and every revision has to stay in one head. Tools on the machine, not in the prompt: <code>yt-dlp</code>, <code>ffmpeg</code>, <code>node</code>. Then give an <strong>outcome, not a task list</strong>. I open with <code>/goal</code> + the outcome, which pins it for the whole run so Claude drives to done instead of stopping at the first deliverable. Sunday, 5:25 PM:</p>
 
-    <div class="message-example">
-      <div class="msg-label">Me → Claude · Sunday 5:25 PM · translated from French</div>
-      I want you to make me a video in the same style as https://x.com/chhddavid/status/2080788252425150535<br><br>But for YourMax.ai
+    <div class="terminal">
+      <div class="terminal-bar"><span></span><span></span><span></span><span class="terminal-title">claude</span></div>
+      <div class="terminal-body"><span class="t-caret">❯</span> <span class="t-cmd">/goal</span> I want you to make me a video in the same style as https://x.com/chhddavid/status/2080788252425150535
+
+But for YourMax.ai
+
+<span class="t-dim">Goal set: make a video in the same style as the reference, but for YourMax.ai</span></div>
     </div>
+    <div class="terminal-caption">Sunday 5:25 PM · translated from French</div>
 
     <p><strong>38 minutes later I had a full 50-second render.</strong> In between, Claude downloaded the reference with <code>yt-dlp</code>, extracted one frame every 0.5 seconds with <code>ffmpeg</code>, studied all 100 frames, wrote a teardown (12 numbered grammar rules, a beat map, the reference's own weak points), and only then scaffolded the project. It knew to do all of that without being told, because steps 1 to 4 made it the house style.</p>
 
