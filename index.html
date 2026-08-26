@@ -7,7 +7,7 @@
 
 <!-- OG / Link Preview -->
 <meta property="og:title" content="How I Made a 68-Second Launch Film From a One-Line Prompt">
-<meta property="og:description" content="The real transcript: the one-line prompt, the setup that made it enough, the 5 feedback notes, the 12 grammar rules, and the exact prompt to reproduce it.">
+<meta property="og:description" content="The real steps: the reverse-engineering habit, 3 teardowns, a warm pipeline, /goal-shaped asks, 5 feedback notes, and the 12 grammar rules.">
 <meta property="og:image" content="https://nifinet.github.io/motion-playbook/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -16,7 +16,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How I Made a 68-Second Launch Film From a One-Line Prompt">
-<meta name="twitter:description" content="The real transcript: the one-line prompt, the setup, the 5 feedback notes, and the 12 grammar rules.">
+<meta name="twitter:description" content="The real steps: the reverse-engineering habit, 3 teardowns, a warm pipeline, and the 12 grammar rules.">
 <meta name="twitter:image" content="https://nifinet.github.io/motion-playbook/og-image.png">
 <meta name="description" content="How I made a 68-second launch film with Claude from a one-line prompt. The real transcript: the setup, the 5 feedback notes, the 12 grammar rules, and the traps.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -479,10 +479,11 @@ code {
       </div>
     </div>
     <h1>How I made a 68-second launch film from a <span class="grad">one-line prompt.</span></h1>
-    <p style="font-size:17px;">Everyone who saw the film asked for the prompt. Here's the uncomfortable truth: the prompt was one line. The setup around it did the work. This is the real transcript (I work in French; quotes are translated), including what didn't work.</p>
+    <p style="font-size:17px;">Everyone who saw the film asked for the prompt. The uncomfortable truth: the prompt was one line, and it's the least interesting part. It only worked because of what was built in the weeks before. These are the actual steps, from the real transcript (I work in French; quotes are translated), including what didn't work.</p>
     <div class="header-stats">
       <div class="stat"><strong>68s</strong> final film</div>
-      <div class="stat"><strong>1 line</strong> initial prompt</div>
+      <div class="stat"><strong>3</strong> teardowns first</div>
+      <div class="stat"><strong>1 line</strong> final prompt</div>
       <div class="stat"><strong>38 min</strong> to the first render</div>
       <div class="stat"><strong>5</strong> feedback notes</div>
     </div>
@@ -514,31 +515,44 @@ code {
 
     <p>It downloaded the reference video with <code>yt-dlp</code>, extracted <strong>one frame every 0.5 seconds</strong> with <code>ffmpeg</code>, studied all 100 frames, and wrote a teardown file: 12 numbered grammar rules, a beat map with timestamps, and the reference's own structural weak points. Only then did it scaffold a Remotion project and start building.</p>
 
+    <p>If that autonomy looks like magic, it isn't. Nothing in those 38 minutes was improvised; every move was a habit installed in the weeks before. That's the actual playbook, and it's the next section.</p>
+
     <div class="callout">
       <strong>Steal the grammar, not the pixels.</strong> The reference film works because every effect in it is CSS: blur, opacity, transform, gradient, mask. A code-generated motion film is made of the exact materials the model writes fluently. You're not asking for After Effects. You're asking for a web page that happens to be 68 seconds long.
     </div>
 
-    <h2>The setup that made one line enough</h2>
+    <h2>The steps that made one line enough</h2>
 
-    <p>The prompt was short because everything it needed was already in place. Four things:</p>
+    <p>The one-line prompt is the last step of a staircase. Here's the staircase, in the order it was actually built:</p>
 
     <div class="step">
-      <h3><span class="step-number">1</span>The biggest model, wide context</h3>
+      <h3><span class="step-number">1</span>Weeks earlier: teach the machine to reverse-engineer</h3>
     </div>
-    <p>First command of the session: <code>/model</code> → Opus with 1M context. A film is one giant coherent artifact: 100 reference frames, a teardown, four source files, and every revision have to stay in one head. Don't run this on a small model to save credits, the retries cost more than the model.</p>
+    <p>Long before the film, I had built a <strong>reverse-engineering skill</strong> in Claude Code: give it any post and a 3-agent pipeline (decoder → translator → critic) tears it down into an ingredients list across 17 dimensions. The rule it hard-codes into every session: <strong>never imitate the artifact, extract the ingredients.</strong> That's why the film session's first move was frame extraction. Teardown-first wasn't a clever prompt, it was already the house style.</p>
 
     <div class="step">
-      <h3><span class="step-number">2</span>Tools on the machine, not in the prompt</h3>
+      <h3><span class="step-number">2</span>13 days earlier: tear down the masters</h3>
     </div>
-    <p><code>yt-dlp</code>, <code>ffmpeg</code>, and <code>node</code> installed. That's what turns "look at this video" from impossible into a 100-frame analysis, and what lets Claude render and re-render on its own. I never asked it to extract frames. It could, so it did.</p>
+    <p>Two forensic teardowns of the best launch-film makers, written to disk: <strong>1600.agency</strong> (132 frames analyzed; the agency behind several SaaS launch films) and <strong>Represent Studio</strong> (the studio behind YC launches, their founder's doctrine distilled from four videos). Plus a storyboard built from both grammars. When the @chhddavid film dropped, it was teardown #3, not #1.</p>
 
     <div class="step">
-      <h3><span class="step-number">3</span>The brand truth was findable</h3>
+      <h3><span class="step-number">3</span>11 days earlier: reps on a first film</h3>
     </div>
-    <p>The palette wasn't described to Claude, it was <strong>lifted from the live site's computed styles</strong>. Fonts, product vocabulary, real pricing, the no-fake-people rule: all of it lived in files and memory Claude could read. If your brand exists only in your head, the one-line prompt doesn't work.</p>
+    <p>The Remotion project already existed. A first launch film had been built, rendered in A/B cuts, and put through QA rounds the week before. It never shipped, but the pipeline was warm: render scripts, QA screenshot loops, a soundtrack folder. The 68-second film wasn't attempt #1. <strong>Nobody's one-line prompt is attempt #1.</strong></p>
 
     <div class="step">
-      <h3><span class="step-number">4</span>An architecture built for rewrites</h3>
+      <h3><span class="step-number">4</span>Ongoing: brand truth on disk, not in my head</h3>
+    </div>
+    <p>The palette wasn't described to Claude, it was <strong>lifted from the live site's computed styles</strong>. Fonts, product vocabulary, real pricing, the no-fake-people rule, the fictional portraits already published on the site: all of it lived in files and memory Claude could read. One line can't carry brand context. It doesn't have to if the machine can go get it.</p>
+
+    <div class="step">
+      <h3><span class="step-number">5</span>The session: biggest model, goal-shaped ask</h3>
+    </div>
+    <p>First command: <code>/model</code> → Opus with 1M context. A film is one giant coherent artifact: 100 reference frames, a teardown, four source files, and every revision have to stay in one head. Don't run this on a small model to save credits, the retries cost more than the model. And the machine needs its hands: <code>yt-dlp</code>, <code>ffmpeg</code>, <code>node</code> installed is what turns "look at this video" into a 100-frame analysis, and what lets Claude render and re-render on its own.</p>
+    <p>Then give an <strong>outcome, not a task list</strong>. My default for bigger missions is opening the session with <code>/goal</code> + the outcome ("Goal set: …"), which pins it for the whole run so Claude drives to done instead of stopping at the first deliverable. The film brief was small enough to fit the same idea in one message: the style I want, the product it's for, nothing else.</p>
+
+    <div class="step">
+      <h3><span class="step-number">6</span>In-session: an architecture built for rewrites</h3>
     </div>
     <p>Claude structured the project as four files: <strong>tokens.ts</strong> (palette, fonts, beat map), <strong>kit.tsx</strong> (motion primitives: gradient bloom, kinetic type, ghost words, cursor, counters), <strong>surfaces.tsx</strong> (the product UI), <strong>scenes.tsx</strong> (one component per beat). Every beat mounts as its own <code>&lt;Sequence&gt;</code>, so beat 9 can be rewritten without touching the other 15. This is why the feedback loop below was cheap.</p>
 
@@ -637,7 +651,7 @@ code {
 
     <h2>The prompt to skip my two evenings</h2>
 
-    <p>My real prompt only worked because the iteration taught the rest. This version front-loads everything the two evenings taught, so you can start where I finished. Paste it into Claude Code, fill the brackets.</p>
+    <p>My real prompt only worked because the staircase existed. This version compresses the steps: it front-loads the teardown habit, the architecture, and everything the two evenings taught, so you can start closer to where I finished. Paste it into Claude Code, fill the brackets.</p>
 
     <div class="prompt-block">
       <div class="prompt-header">
