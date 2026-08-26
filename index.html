@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Made a 68-Second Launch Film From a One-Line Prompt</title>
+
+<!-- OG / Link Preview -->
+<meta property="og:title" content="How I Made a 68-Second Launch Film From a One-Line Prompt">
+<meta property="og:description" content="The real transcript: the one-line prompt, the setup that made it enough, the 5 feedback notes, the 12 grammar rules, and the exact prompt to reproduce it.">
+<meta property="og:image" content="https://nifinet.github.io/motion-playbook/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://nifinet.github.io/motion-playbook/">
+<meta property="og:type" content="article">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I Made a 68-Second Launch Film From a One-Line Prompt">
+<meta name="twitter:description" content="The real transcript: the one-line prompt, the setup, the 5 feedback notes, and the 12 grammar rules.">
+<meta name="twitter:image" content="https://nifinet.github.io/motion-playbook/og-image.png">
+<meta name="description" content="How I made a 68-second launch film with Claude from a one-line prompt. The real transcript: the setup, the 5 feedback notes, the 12 grammar rules, and the traps.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --border: #e5e5e5;
+  --accent: #d6336c;
+  --accent-light: #fdeef4;
+  --code-bg: #f5f5f5;
+  --card-bg: #fafafa;
+  --film-gradient: linear-gradient(135deg, #FB923C, #FB7185, #EC4899);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.avatar-mono {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--film-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.header-meta .author-info {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.header-meta .author-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.header-meta .author-name a { color: inherit; text-decoration: none; }
+
+h1 {
+  font-size: clamp(28px, 5vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+h1 .grad {
+  background: var(--film-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.stat {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.stat strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== VIDEO HERO ===== */
+.video-hero { margin: 40px 0 8px; }
+
+.video-frame {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.video-frame img, .video-frame video { width: 100%; display: block; }
+
+.video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-play span {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(26,26,26,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-play span::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 18px solid #fff;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 5px;
+}
+
+.video-caption {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding-top: 10px;
+}
+
+/* ===== CONTENT ===== */
+.content { padding: 48px 0 0; }
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 56px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+h2:first-child { margin-top: 0; }
+
+h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 32px 0 8px;
+}
+
+p {
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+p strong { color: var(--text); font-weight: 600; }
+a { color: var(--accent); }
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ===== CALLOUT ===== */
+.callout {
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  margin: 24px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.callout strong { font-weight: 600; }
+
+/* ===== STEPS ===== */
+.step { margin: 28px 0 8px; }
+
+.step h3 {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--text);
+  color: white;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* ===== MESSAGE EXAMPLES (real transcript) ===== */
+.message-example {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 14px 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.message-example .msg-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.message-example .msg-translation {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+/* ===== RULE CARDS ===== */
+.rule-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+
+.rule-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.rule-card p {
+  font-size: 14px;
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+.rule-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--text);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 8px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== SCREENSHOTS ===== */
+.screenshot {
+  margin: 24px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.screenshot img { width: 100%; display: block; }
+
+.screenshot-caption {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 8px 16px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+}
+
+.shot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.shot-grid .screenshot { margin: 0; }
+
+@media (max-width: 560px) {
+  .shot-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== PROMPT BLOCK ===== */
+.prompt-block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+
+.prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.copy-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.copy-btn:hover { border-color: var(--text-muted); }
+
+.copy-btn.copied {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.prompt-content {
+  background: var(--code-bg);
+  padding: 20px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* ===== TRAPS ===== */
+.trap-list { list-style: none; margin: 16px 0 24px; }
+
+.trap-list li {
+  padding: 12px 0 12px 28px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.trap-list li::before {
+  content: '✕';
+  position: absolute;
+  left: 2px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.trap-list li strong { color: var(--text); font-weight: 600; }
+
+/* ===== CTA ===== */
+.cta-section {
+  margin: 64px 0 0;
+  padding: 40px 32px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.cta-section h2 { margin: 0 0 12px; }
+
+.cta-section p {
+  max-width: 460px;
+  margin: 0 auto 24px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--text);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.cta-button:hover { background: #000; }
+
+.cta-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 14px 0 0;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 40px 0 56px;
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.footer a { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <div class="header-meta">
+      <div class="avatar-mono">NF</div>
+      <div class="author-info">
+        <div class="author-name"><a href="https://www.linkedin.com/in/nifinet" target="_blank" rel="noopener">Nicolas Finet</a></div>
+        <div>Cofounder, Sortlist · building Max at yourmax.ai</div>
+      </div>
+    </div>
+    <h1>How I made a 68-second launch film from a <span class="grad">one-line prompt.</span></h1>
+    <p style="font-size:17px;">Everyone who saw the film asked for the prompt. Here's the uncomfortable truth: the prompt was one line, in French, with a typo. The setup around it did the work. This is the real transcript, verbatim, including what didn't work.</p>
+    <div class="header-stats">
+      <div class="stat"><strong>68s</strong> final film</div>
+      <div class="stat"><strong>1 line</strong> initial prompt</div>
+      <div class="stat"><strong>38 min</strong> to the first render</div>
+      <div class="stat"><strong>5</strong> feedback notes</div>
+    </div>
+  </header>
+
+  <div class="video-hero">
+    <div class="video-frame">
+      <video controls preload="metadata" poster="img/poster.jpg" playsinline>
+        <source src="yourmax-motion-68s.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-caption">The final cut · 68s · 1920×1080 · 60fps · rendered from code, zero After Effects</div>
+  </div>
+
+  <div class="content">
+
+    <h2>The prompt everyone asks for</h2>
+
+    <p>Sunday, 5:25 PM. This is the entire prompt, copied from my Claude Code transcript:</p>
+
+    <div class="message-example">
+      <div class="msg-label">Me → Claude · Sunday 5:25 PM</div>
+      Je veux que tu me fasses une vidéo du même style https://x.com/chhddavid/status/2080788252425150535<br><br>Mais pour YourMax.ai
+      <div class="msg-translation">"I want you to make me a video in the same style as [this X post]. But for YourMax.ai."</div>
+    </div>
+
+    <p>The link in there is the whole brief. It points to <a href="https://x.com/chhddavid/status/2080788252425150535" target="_blank" rel="noopener"><strong>this film by @chhddavid for Shipper</strong></a>, the "Claude Opus 5 one-shots motion videos" post. Go watch it before reading on: it's a masterclass, everything below is reverse-engineered from it, and none of this exists without his film.</p>
+
+    <p>Beyond the link, no storyboard, no shot list, no style guide pasted in. <strong>38 minutes later I had a full 50-second render.</strong> In between, unprompted, Claude did the thing that actually matters:</p>
+
+    <p>It downloaded the reference video with <code>yt-dlp</code>, extracted <strong>one frame every 0.5 seconds</strong> with <code>ffmpeg</code>, studied all 100 frames, and wrote a teardown file: 12 numbered grammar rules, a beat map with timestamps, and the reference's own structural weak points. Only then did it scaffold a Remotion project and start building.</p>
+
+    <div class="callout">
+      <strong>Steal the grammar, not the pixels.</strong> The reference film works because every effect in it is CSS: blur, opacity, transform, gradient, mask. A code-generated motion film is made of the exact materials the model writes fluently. You're not asking for After Effects. You're asking for a web page that happens to be 68 seconds long.
+    </div>
+
+    <h2>The setup that made one line enough</h2>
+
+    <p>The prompt was short because everything it needed was already in place. Four things:</p>
+
+    <div class="step">
+      <h3><span class="step-number">1</span>The biggest model, wide context</h3>
+    </div>
+    <p>First command of the session: <code>/model</code> → Opus with 1M context. A film is one giant coherent artifact: 100 reference frames, a teardown, four source files, and every revision have to stay in one head. Don't run this on a small model to save credits, the retries cost more than the model.</p>
+
+    <div class="step">
+      <h3><span class="step-number">2</span>Tools on the machine, not in the prompt</h3>
+    </div>
+    <p><code>yt-dlp</code>, <code>ffmpeg</code>, and <code>node</code> installed. That's what turns "look at this video" from impossible into a 100-frame analysis, and what lets Claude render and re-render on its own. I never asked it to extract frames. It could, so it did.</p>
+
+    <div class="step">
+      <h3><span class="step-number">3</span>The brand truth was findable</h3>
+    </div>
+    <p>The palette wasn't described to Claude, it was <strong>lifted from the live site's computed styles</strong>. Fonts, product vocabulary, real pricing, the no-fake-people rule: all of it lived in files and memory Claude could read. If your brand exists only in your head, the one-line prompt doesn't work.</p>
+
+    <div class="step">
+      <h3><span class="step-number">4</span>An architecture built for rewrites</h3>
+    </div>
+    <p>Claude structured the project as four files: <strong>tokens.ts</strong> (palette, fonts, beat map), <strong>kit.tsx</strong> (motion primitives: gradient bloom, kinetic type, ghost words, cursor, counters), <strong>surfaces.tsx</strong> (the product UI), <strong>scenes.tsx</strong> (one component per beat). Every beat mounts as its own <code>&lt;Sequence&gt;</code>, so beat 9 can be rewritten without touching the other 15. This is why the feedback loop below was cheap.</p>
+
+    <div class="screenshot">
+      <img src="img/surface-morning-list.jpg" alt="A product surface from the film: the Max morning list with five ranked leads">
+      <div class="screenshot-caption">A "surface" from surfaces.tsx. Real copy where it carries meaning, skeleton bars everywhere else.</div>
+    </div>
+
+    <h2>The feedback loop, verbatim</h2>
+
+    <p>Full honesty: the visuals landed on the first render. The script took three passes, and the fixes came from five short notes over two evenings. This is every piece of direction I gave, copied verbatim from the transcript, typos included. Notice what they are: <strong>taste, not specs.</strong></p>
+
+    <div class="message-example">
+      <div class="msg-label">Note 1 · Sunday 7:13 PM · after watching the first cut</div>
+      visuellement c'ets canon. Je pense que tu devrais rebosser sur le script pour que ça soit plus logique.
+      <div class="msg-translation">"Visually it's stunning. I think you should rework the script so it's more logical." → Claude found three logic faults it had copied from the reference: solution shown before the problem, the 7 AM result delivered before the 4 AM work, logo reveal at 26s so the film seemed to end and restart. It recut to six acts: enemy, setup, night, morning, judgment, price.</div>
+    </div>
+
+    <div class="message-example">
+      <div class="msg-label">Note 2 · Sunday 8:00 PM</div>
+      ok c'est bien mais je veux 0 em dashes. Parfois des problèmes de centrage
+      <div class="msg-translation">"OK it's good but I want 0 em dashes. Some centering problems." → All on-screen metadata separators became "·", and the kinetic type's lateral drift was made symmetric so finished lines settle back to center.</div>
+    </div>
+
+    <div class="message-example">
+      <div class="msg-label">Note 3 · Sunday 8:43 PM</div>
+      je capte pas le "Alex Gasson" à la fin
+      <div class="msg-translation">"I don't get the 'Alex Gasson' at the end." → The film's payoff (the #1 lead, by name) was rendered as a bare text pill and nobody read it as the answer. It became a full lead card with a face and a "call me first" bubble. The answer to "who do you call first?" has to be a person, not a string.</div>
+    </div>
+
+    <div class="message-example">
+      <div class="msg-label">Note 4 · Monday 7:51 AM · after showing it around</div>
+      On m'a dit: trop rapide<br>
+      Aussi: on devrait mettre des tête de personnes plutôt que des initiales ou des placeholders.<br>
+      Focus sur 99€: je mettrais plutôt focus sur free trial. Par contre fait pas un gros zoom FREE<br>
+      Tu proposes quoi? (avant de rebuild)
+      <div class="msg-translation">"I was told: too fast. Also: we should use people's faces instead of initials or placeholders. Focus on €99: I'd focus on the free trial instead. But don't do a big FREE zoom. What do you propose? (before rebuilding)" → Claude proposed: stretch 50s to 68s by giving reading time to text beats, reuse the 22 fictional portraits already published on the site (no real people, and the film matches the site), and close on seven day-tiles filling up instead of a giant FREE, with €99 kept as a subordinate line so pricing isn't hidden.</div>
+    </div>
+
+    <div class="message-example">
+      <div class="msg-label">Note 5 · Monday 7:55 AM</div>
+      go
+      <div class="msg-translation">The final 68s master rendered that morning.</div>
+    </div>
+
+    <div class="callout">
+      <strong>The pattern:</strong> I never told Claude how to fix anything. I said what felt wrong ("plus logique", "trop rapide", "je capte pas") and once asked for options before a rebuild. Screenshots of frames that looked off, pasted straight into the terminal, did the rest. Direction is a taste job; the model owns the craft.
+    </div>
+
+    <h2>The 12 grammar rules Claude extracted from 100 frames</h2>
+
+    <p>This is what "steal the grammar, not the pixels" produced. Every rule is in the reference and in my film, and none of them need anything beyond CSS.</p>
+
+    <div class="rule-card"><h4><span class="rule-number">1</span>Gradient bloom from the bottom</h4><p>One heavily blurred radial blob rising from below the frame, slowly breathing. The top 40% of the frame stays near-white. Never a hard edge.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">2</span>Kinetic type, word by word</h4><p>Each word lands blurred, slightly low and large, then settles. The line drifts laterally as it grows, so it reads as a slow camera move.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">3</span>One coloured word per line</h4><p>The key word gets the brand gradient. Everything else is near-black. Never two highlights in one line.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">4</span>The giant ghost word</h4><p>A single huge word behind the copy at 6-9% opacity, clipped by the frame, slowly scaling. It names the territory the line is about.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">5</span>Chapter cards</h4><p>Chromatic inversion to near-black with one enormous glowing word, about 1.2s each, each with its own background motif.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">6</span>The reasoning wall</h4><p>Actual model reasoning scrolling on the dark ground. This is the credibility beat, and it only works if the text is real.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">7</span>Skeleton-realistic UI</h4><p>Real copy where it carries meaning, grey bars everywhere else. Never a full screenshot, never a full wireframe.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">8</span>The cursor is the protagonist</h4><p>One big arrow that travels, presses, and whose clicks cause the next beat. It appears at the prompts and at the CTA.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">9</span>Everything tilted</h4><p>Perspective and slight rotateY on every surface, cards stacked at different depths with progressive blur.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">10</span>Imperfect numbers</h4><p>−€146 459, 12 417. Round numbers read as invented.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">11</span>The cost motif</h4><p>A ring of avatars with a red counter climbing in the centre, then "salary"-style cost cards tumbling in the foreground. Establish the price of the alternative before naming your own.</p></div>
+    <div class="rule-card"><h4><span class="rule-number">12</span>Flip, inversion, CTA</h4><p>The promise grows until it overflows, the ground inverts, one inverted line, then back to light for logo plus a question-shaped CTA pill. End on the question, never on a feature.</p></div>
+
+    <div class="shot-grid">
+      <div class="screenshot">
+        <img src="img/rule-cost-motif.jpg" alt="Ring of 18 avatars around a red climbing cost counter">
+        <div class="screenshot-caption">Rule 11, the cost motif. Rule 10, the imperfect number.</div>
+      </div>
+      <div class="screenshot">
+        <img src="img/rule-reasoning-wall.jpg" alt="Model reasoning scrolling on a dark ground with coloured section headings">
+        <div class="screenshot-caption">Rule 6, the reasoning wall. The text is real.</div>
+      </div>
+      <div class="screenshot">
+        <img src="img/rule-chapter-card.jpg" alt="Chapter card: the word rank in braces glowing on a near-black ground">
+        <div class="screenshot-caption">Rule 5, a chapter card with its own motif.</div>
+      </div>
+      <div class="screenshot">
+        <img src="img/rule-money-beat.jpg" alt="Cost cards tumbling around the line One list replaces the stack">
+        <div class="screenshot-caption">Rules 3 and 11 together, in the money beat.</div>
+      </div>
+    </div>
+
+    <h3>The traps that will eat your afternoon</h3>
+
+    <ul class="trap-list">
+      <li><strong>Check your display font ships numerals.</strong> Mine didn't. Every number rendered as ⊘ until all digits moved to the body font.</li>
+      <li><strong>Product surfaces read small in motion.</strong> At 1920 wide, panels want 1350-1700px and body text 22-30px. What's legible as a screenshot is illegible at 60fps.</li>
+      <li><strong>Chromatic inversion needs an empty frame.</strong> If a surface is still on screen when the ground flips, you get a muddy grey mess. Fade out fully first.</li>
+      <li><strong>Don't crossfade two centred states.</strong> Sequence them with a gap: out fully, then in. Overlapping muddies both.</li>
+      <li><strong>Make the lateral drift symmetric.</strong> One-way drift leaves every finished line permanently off-centre and clips long lines.</li>
+      <li><strong>Check clock times against beat order.</strong> My first cut showed the 7 AM result before the 4 AM work. Nobody catches this at storyboard stage; check it on the render.</li>
+    </ul>
+
+    <h2>The prompt to skip my two evenings</h2>
+
+    <p>My real prompt only worked because the iteration taught the rest. This version front-loads everything the two evenings taught, so you can start where I finished. Paste it into Claude Code, fill the brackets.</p>
+
+    <div class="prompt-block">
+      <div class="prompt-header">
+        <span>The launch film prompt</span>
+        <button onclick="copyPrompt()" class="copy-btn" id="copyBtn">Copy</button>
+      </div>
+      <pre class="prompt-content" id="promptContent">I want a launch film for [YOUR PRODUCT], in the style of this reference video: [REFERENCE URL]
+
+Work in two passes. Do not start building until pass 1 is written to a file.
+
+PASS 1 · TEARDOWN
+Download the reference video and extract one frame every 0.5 seconds.
+Study every frame and write a teardown file containing:
+- The grammar: every recurring visual rule, numbered (typography, color, motion, layout, UI treatment)
+- A beat map: timestamp, what is on screen, what the copy says
+- Weak points: logic or pacing faults in the reference itself, so we don't copy them
+
+PASS 2 · BUILD
+Set up a Remotion project, 1920x1080, 60fps, structured as four files:
+- tokens.ts    → palette lifted from my live site's computed styles, fonts, beat map
+- kit.tsx      → motion primitives (gradient bloom, kinetic type, ghost word, chapter card, cursor, counters)
+- surfaces.tsx → my product's UI, skeleton-realistic: real copy where it carries meaning, grey bars everywhere else
+- scenes.tsx   → one component per beat, each mounted as its own &lt;Sequence&gt;
+
+Rewrite the story for MY product. Do not copy the reference's beat order.
+Before rendering, verify:
+1. The problem is stated before the solution is shown
+2. Any clock times on screen appear in chronological order
+3. There is exactly one logo reveal, merged into the final CTA
+4. Every number on screen is imperfect (12 417, not 12 000)
+5. Text beats get reading time; visual beats can be fast
+6. The film ends on a question to the viewer, never on a feature
+
+My brand: [fonts / palette / product vocabulary / banned words / real pricing]
+My product's honest story: [what it actually does, in one sentence]</pre>
+    </div>
+
+    <div class="callout">
+      <strong>Then run my real loop:</strong> watch the render, and answer with taste, not specs. "The script isn't logical." "Too fast." "I don't get the ending." Paste screenshots of frames that look off. Ask "what do you propose?" before big rebuilds. Five notes like that is what separates the first render from the master.
+    </div>
+
+    <div class="cta-section">
+      <h2>What the film actually sells</h2>
+      <p>68 seconds arguing one thing: you should wake up to a ranked list of the 5 people to call first, with the evidence attached. That list is real. It's what Max builds overnight.</p>
+      <a href="https://www.yourmax.ai" class="cta-button" target="_blank" rel="noopener">See your morning list →</a>
+      <p class="cta-sub">Free for 7 days, no card.</p>
+    </div>
+
+    <div class="footer">
+      Questions about the setup? I answer everything on <a href="https://www.linkedin.com/in/nifinet" target="_blank" rel="noopener">LinkedIn</a>.
+    </div>
+
+  </div>
+</div>
+
+<script>
+function copyPrompt() {
+  const text = document.getElementById('promptContent').innerText;
+  const btn = document.getElementById('copyBtn');
+  function done() {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallback());
+  } else { fallback(); }
+  function fallback() {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+}
+</script>
+</body>
+</html>
